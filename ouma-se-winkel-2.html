@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ouma se Winkel — Tradisionele Tuisgebak, Brackenfell</title>
+<link rel="preload" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chocolate_Cake_Flourless_%281%29.jpg/640px-Chocolate_Cake_Flourless_%281%29.jpg" as="image" />
+<link rel="preload" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Apricot_jam_cupcakes.jpg/640px-Apricot_jam_cupcakes.jpg" as="image" />
+<link rel="preload" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Melktert_1.jpg/640px-Melktert_1.jpg" as="image" />
+<link rel="preload" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Meat_pie_from_Irvine%27s.jpg/640px-Meat_pie_from_Irvine%27s.jpg" as="image" />
+<link rel="preload" href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Rusks_beschuit.jpg/640px-Rusks_beschuit.jpg" as="image" />
+<link rel="preload" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Koeksisters.jpg/640px-Koeksisters.jpg" as="image" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --cream:#fdf6ec; --warm:#fffbf4; --brown:#5c3d2e; --bmid:#8b5e3c;
+  --blt:#c9956c; --gold:#d4a843; --rust:#b84c2b; --text:#2e1f12;
+  --tl:#7a5c44; --bdr:#e8d5be;
+  --gc:rgba(168,60,38,.042); --gs:42px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',Georgia,sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;
+  justify-content:space-between;padding:0 52px;height:64px;
+  background:rgba(253,246,236,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bdr);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 28px rgba(92,61,46,.12)}
+.nav-logo{font-family:'Dancing Script',Georgia,cursive;font-size:1.65rem;color:var(--brown);
+  text-decoration:none;letter-spacing:.5px;flex-shrink:0;white-space:nowrap}
+.nav-logo span{color:var(--rust)}
+.nav-links{display:flex;gap:26px;list-style:none;align-items:center;flex:1;justify-content:center}
+.nav-links a{font-size:.78rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--brown);
+  text-decoration:none;position:relative;padding-bottom:3px;transition:color .25s;white-space:nowrap}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;
+  background:var(--rust);transition:width .3s}
+.nav-links a:hover{color:var(--rust)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--rust)!important;color:#fff!important;padding:8px 18px;border-radius:2px}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--brown)!important}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.lang-toggle{display:flex;border:1.5px solid var(--bdr);border-radius:3px;overflow:hidden}
+.lang-btn{background:none;border:none;cursor:pointer;font-family:'Lato',sans-serif;
+  font-size:.68rem;letter-spacing:1.8px;text-transform:uppercase;
+  padding:6px 11px;color:var(--tl);transition:background .2s,color .2s}
+.lang-btn.active{background:var(--rust);color:#fff}
+.lang-btn:not(.active):hover{background:var(--bdr)}
+.bk-btn{position:relative;background:var(--brown);color:#fff;border:none;border-radius:2px;
+  padding:8px 16px;font-family:'Lato',sans-serif;font-size:.78rem;letter-spacing:1.4px;
+  text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:7px;
+  transition:background .25s;white-space:nowrap}
+.bk-btn:hover{background:var(--rust)}
+.bk-badge{background:var(--gold);color:var(--brown);font-size:.62rem;font-weight:700;
+  border-radius:50%;width:18px;height:18px;display:none;align-items:center;
+  justify-content:center;position:absolute;top:-7px;right:-7px}
+.bk-badge.vis{display:flex}
+.nav-tog{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.nav-tog span{display:block;width:22px;height:1.5px;background:var(--brown);transition:.3s}
+.nav-tog.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-tog.open span:nth-child(2){opacity:0}
+.nav-tog.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;top:64px;left:0;right:0;z-index:199;
+  background:rgba(253,246,236,.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bdr);flex-direction:column;padding:20px 24px 28px}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:.82rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--brown);
+  text-decoration:none;padding:11px 0;border-bottom:1px solid var(--bdr);transition:color .2s}
+.nav-drawer a:hover{color:var(--rust)}
+.nav-drawer .dcta{margin-top:10px;background:var(--rust);color:#fff;
+  text-align:center;padding:12px;border-radius:2px}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:64px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;
+  padding:80px 60px 80px 80px;position:relative;background-color:var(--cream);
+  background-image:
+    repeating-linear-gradient(0deg,var(--gc) 0,var(--gc) 1px,transparent 1px,transparent var(--gs)),
+    repeating-linear-gradient(90deg,var(--gc) 0,var(--gc) 1px,transparent 1px,transparent var(--gs))}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--rust);margin-bottom:28px}
+.hero-badge::before{content:'';display:block;width:28px;height:1px;background:var(--rust)}
+.hero-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(3rem,4.8vw,5rem);
+  line-height:1.08;color:var(--brown);margin-bottom:10px}
+.hero-title em{font-style:italic;color:var(--rust)}
+.hero-sub{font-family:'Dancing Script',Georgia,cursive;font-size:1.6rem;color:var(--blt);margin-bottom:28px}
+.hero-desc{font-size:1.05rem;line-height:1.8;color:var(--tl);max-width:440px;margin-bottom:44px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-p{display:inline-flex;align-items:center;justify-content:center;background:var(--rust);
+  color:#fff;padding:15px 34px;border-radius:2px;font-family:'Lato',sans-serif;
+  font-size:.82rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  border:none;cursor:pointer;transition:background .25s,transform .2s}
+.btn-p:hover{background:var(--brown);transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;justify-content:center;
+  border:1.5px solid var(--bmid);color:var(--brown);padding:15px 34px;border-radius:2px;
+  font-family:'Lato',sans-serif;font-size:.82rem;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;background:none;cursor:pointer;transition:background .25s,color .25s}
+.btn-o:hover{background:var(--brown);color:#fff}
+.hero-hrs{margin-top:52px;display:flex;gap:32px;padding-top:32px;
+  border-top:1px solid var(--bdr);flex-wrap:wrap}
+.hero-hrs-i{font-size:.8rem}
+.hero-hrs-i strong{display:block;color:var(--brown);font-size:.7rem;letter-spacing:1.8px;
+  text-transform:uppercase;margin-bottom:4px}
+.hero-hrs-i span{color:var(--tl)}
+.hero-right{position:relative;overflow:hidden;background:var(--brown)}
+.hero-grid{display:grid;grid-template-rows:60% 40%;height:100%}
+.hero-main{background:
+  linear-gradient(160deg,rgba(92,61,46,.35) 0%,transparent 60%),
+  url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1280px-Good_Food_Display_-_NCI_Visuals_Online.jpg')
+  center/cover no-repeat;position:relative}
+.hero-bot{display:grid;grid-template-columns:1fr 1fr}
+.hero-bot div:nth-child(1){background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Melktert_1.jpg/640px-Melktert_1.jpg') center/cover no-repeat}
+.hero-bot div:nth-child(2){background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Koeksisters.jpg/640px-Koeksisters.jpg') center/cover no-repeat}
+.hero-tag{position:absolute;bottom:24px;left:24px;background:rgba(253,246,236,.93);
+  padding:10px 18px;border-radius:2px;font-size:.72rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--brown);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+
+/* ── STRIP ── */
+.strip{background:var(--brown);color:var(--cream);display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.strip-i{padding:44px 28px;border-right:1px solid rgba(255,255,255,.08);transition:background .3s}
+.strip-i:last-child{border-right:none}
+.strip-i:hover{background:rgba(255,255,255,.06)}
+.strip-icon{font-size:2rem;margin-bottom:12px}
+.strip-title{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:8px;color:var(--gold)}
+.strip-body{font-size:.84rem;line-height:1.65;opacity:.78}
+
+/* ── SECTION ── */
+.sec{padding:100px 80px}
+.sec.alt{background:var(--warm)}
+.sec-lbl{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--rust);
+  margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--bdr);max-width:60px}
+.sec-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,3.5vw,3rem);
+  color:var(--brown);line-height:1.15;margin-bottom:18px}
+.sec-title em{font-style:italic;color:var(--rust)}
+.sec-body{font-size:1rem;line-height:1.85;color:var(--tl);max-width:540px}
+
+/* ── PRODUCT GRID ── */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+
+/* Background-image sits directly on the element — same pattern as .hero-main.
+   Pseudo-elements do not load external URLs from local file context on Android Brave. */
+.pcard{position:relative;overflow:hidden;aspect-ratio:3/4;min-height:300px;cursor:pointer;
+  display:flex;flex-direction:column;justify-content:flex-end}
+#pc_koeke{background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chocolate_Cake_Flourless_%281%29.jpg/640px-Chocolate_Cake_Flourless_%281%29.jpg') center/cover no-repeat}
+#pc_kolwyntjies{background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Apricot_jam_cupcakes.jpg/640px-Apricot_jam_cupcakes.jpg') center/cover no-repeat}
+#pc_melktert{background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Melktert_1.jpg/640px-Melktert_1.jpg') center/cover no-repeat}
+#pc_vleispasteie{background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Meat_pie_from_Irvine%27s.jpg/640px-Meat_pie_from_Irvine%27s.jpg') center/cover no-repeat}
+#pc_beskuit{background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Rusks_beschuit.jpg/640px-Rusks_beschuit.jpg') center/cover no-repeat}
+#pc_soetgebak{background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Koeksisters.jpg/640px-Koeksisters.jpg') center/cover no-repeat}
+
+
+.pcard-ov{position:relative;z-index:1;padding:24px 22px;background:linear-gradient(to top,rgba(20,6,0,.82) 0%,transparent 100%)}
+
+.pcard-title{font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;color:#fff;
+  margin-bottom:6px;transform:translateY(8px);transition:transform .4s}
+.pcard:hover .pcard-title{transform:translateY(0)}
+.pcard-desc{font-size:.82rem;color:rgba(255,255,255,.78);line-height:1.6;
+  opacity:0;transform:translateY(10px);transition:opacity .4s .05s,transform .4s .05s}
+.pcard:hover .pcard-desc{opacity:1;transform:translateY(0)}
+.pcard-tag{position:absolute;top:20px;left:20px;z-index:2;background:var(--rust);color:#fff;
+  font-size:.65rem;letter-spacing:1.8px;text-transform:uppercase;padding:5px 12px;border-radius:2px}
+.cat-badge{position:absolute;top:20px;right:20px;z-index:2;background:var(--gold);
+  color:var(--brown);font-size:.7rem;font-weight:700;width:26px;height:26px;
+  border-radius:50%;display:none;align-items:center;justify-content:center}
+.cat-badge.vis{display:flex}
+.pcard-btn{position:absolute;bottom:28px;right:24px;z-index:2;background:var(--gold);
+  color:var(--brown);border:none;border-radius:2px;padding:9px 18px;
+  font-family:'Lato',sans-serif;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;font-weight:700;opacity:0;transform:translateY(6px);
+  transition:opacity .3s,transform .3s,background .2s}
+.pcard:hover .pcard-btn{opacity:1;transform:translateY(0)}
+.pcard-btn:hover{background:#fff}
+
+/* ── CATEGORY MODAL ── */
+.cat-ov{position:fixed;inset:0;z-index:500;background:rgba(30,10,0,.55);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;padding:20px}
+.cat-ov.open{display:flex}
+.cat-modal{background:var(--warm);border-radius:3px;width:min(560px,100%);
+  max-height:85vh;display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 24px 64px rgba(30,10,0,.28);animation:su .3s ease}
+@keyframes su{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cat-head{position:relative;height:180px;flex-shrink:0;background-color:var(--brown);
+  background-size:cover;background-position:center}
+.cat-head-grad{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(30,10,0,.75) 0%,transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:22px 26px}
+.cat-modal-title{font-family:'Playfair Display',Georgia,serif;font-size:2rem;color:#fff}
+.cat-modal-desc{font-size:.85rem;color:rgba(255,255,255,.8);margin-top:4px}
+.cat-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.18);
+  border:none;border-radius:50%;width:36px;height:36px;color:#fff;font-size:1rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.cat-close:hover{background:rgba(255,255,255,.32)}
+.cat-body{flex:1;overflow-y:auto;padding:8px 0}
+.cat-row{display:flex;align-items:center;gap:16px;padding:14px 24px;
+  border-bottom:1px solid var(--bdr);transition:background .2s}
+.cat-row:last-child{border-bottom:none}
+.cat-row:hover{background:rgba(92,61,46,.04)}
+.cat-pname{flex:1;font-size:.95rem;color:var(--text)}
+.cat-foot{padding:16px 24px 22px;border-top:1px solid var(--bdr);background:var(--cream);
+  flex-shrink:0;display:flex;gap:12px;align-items:center}
+.cat-count{flex:1;font-size:.82rem;color:var(--tl)}
+.cat-add{background:var(--rust);color:#fff;border:none;border-radius:2px;
+  padding:12px 24px;font-family:'Lato',sans-serif;font-size:.8rem;letter-spacing:1.5px;
+  text-transform:uppercase;cursor:pointer;transition:background .25s;white-space:nowrap}
+.cat-add:disabled{opacity:.35;cursor:not-allowed}
+.cat-add:not(:disabled):hover{background:var(--brown)}
+
+/* qty widget (shared) */
+.qw{display:flex;align-items:center;border:1.5px solid var(--bdr);border-radius:2px;overflow:hidden}
+.qb{background:none;border:none;cursor:pointer;width:32px;height:32px;font-size:1.1rem;
+  color:var(--brown);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.qb:hover{background:var(--bdr)}
+.qv{width:34px;height:32px;text-align:center;font-size:.9rem;font-weight:700;color:var(--brown);
+  border-left:1.5px solid var(--bdr);border-right:1.5px solid var(--bdr);
+  display:flex;align-items:center;justify-content:center}
+
+/* ── SPECIALS BANNER ── */
+.spec-ban{background:var(--rust);color:#fff;padding:70px 80px;
+  display:flex;align-items:center;justify-content:space-between;gap:40px}
+.spec-ey{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;opacity:.75;margin-bottom:14px}
+.spec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2}
+.spec-title em{font-style:italic;opacity:.85}
+.spec-items{display:flex;gap:36px;flex-wrap:wrap;align-items:center}
+.spec-i{text-align:center;min-width:110px}
+.spec-icon{font-size:2.2rem;margin-bottom:8px}
+.spec-name{font-family:'Playfair Display',serif;font-size:1rem}
+.spec-note{font-size:.78rem;opacity:.75;margin-top:3px}
+
+/* ── STORY — CSS bg images ── */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.si{border-radius:2px;overflow:hidden;transition:transform .6s ease}
+.si:hover{transform:scale(1.02)}
+.si-tall{grid-row:span 2;min-height:340px;
+  background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/800px-Good_Food_Display_-_NCI_Visuals_Online.jpg')
+  center/cover no-repeat var(--blt)}
+.si-sm1{aspect-ratio:4/3;
+  background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Melktert_1.jpg/640px-Melktert_1.jpg')
+  center/cover no-repeat var(--blt)}
+.si-sm2{aspect-ratio:4/3;
+  background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Koeksisters.jpg/640px-Koeksisters.jpg')
+  center/cover no-repeat var(--blt)}
+.story-q{font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-style:italic;
+  color:var(--bmid);line-height:1.65;border-left:3px solid var(--gold);
+  padding-left:24px;margin:32px 0}
+
+/* ── TESTIMONIALS ── */
+.testi{background:var(--brown);padding:100px 80px;color:var(--cream)}
+.testi .sec-title{color:var(--cream)}
+.testi .sec-lbl{color:var(--gold)}
+.testi .sec-lbl::after{background:rgba(255,255,255,.15)}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:60px}
+.tc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+  border-radius:2px;padding:36px 32px;transition:background .3s}
+.tc:hover{background:rgba(255,255,255,.1)}
+.ts{color:var(--gold);font-size:1rem;letter-spacing:3px;margin-bottom:18px}
+.tt{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;
+  line-height:1.75;opacity:.88;margin-bottom:24px}
+.ta{font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);opacity:.8}
+
+/* ── VISIT ── */
+.visit{display:grid;grid-template-columns:1fr 1fr}
+.vinfo{padding:100px 80px;background:var(--warm);display:flex;flex-direction:column;justify-content:center}
+.vd{display:flex;gap:20px;align-items:flex-start;margin-top:36px;padding-top:36px;border-top:1px solid var(--bdr)}
+.vd:first-of-type{border-top:none;margin-top:40px}
+.vd-icon{width:42px;height:42px;background:var(--rust);border-radius:2px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;color:#fff}
+.vd-text strong{display:block;font-size:.72rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.vd-text span{font-size:.92rem;line-height:1.75;color:var(--tl)}
+.vd-text a{color:var(--rust);text-decoration:none}
+.vd-text a:hover{text-decoration:underline}
+.vmap iframe{width:100%;height:100%;min-height:440px;border:none;display:block}
+
+/* ── FOOTER ── */
+footer{background-color:var(--brown);
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0,rgba(255,255,255,.022) 1px,transparent 1px,transparent 40px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0,rgba(255,255,255,.022) 1px,transparent 1px,transparent 40px);
+  color:var(--cream);padding:70px 80px 36px}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:48px;margin-bottom:48px}
+.flogo{display:block;font-family:'Dancing Script',cursive;font-size:1.8rem;margin-bottom:18px}
+.flogo span{color:var(--gold)}
+.fdesc{font-size:.88rem;line-height:1.75;opacity:.65;margin-bottom:24px}
+.fsoc{display:flex;gap:10px}
+.fsoc a{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:2px;
+  display:flex;align-items:center;justify-content:center;text-decoration:none;
+  color:rgba(255,255,255,.6);font-size:.9rem;transition:background .25s,color .25s,border-color .25s}
+.fsoc a:hover{background:var(--rust);color:#fff;border-color:var(--rust)}
+.fc-title{font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);margin-bottom:20px}
+.fc ul{list-style:none}
+.fc ul li{margin-bottom:10px}
+.fc ul li a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.87rem;transition:color .25s}
+.fc ul li a:hover{color:var(--gold)}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding-top:28px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.8rem;opacity:.55;flex-wrap:wrap;gap:8px}
+
+/* ── BASKET PANEL ── */
+.bk-ov{display:none;position:fixed;inset:0;z-index:300;background:rgba(30,10,0,.42);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.bk-ov.open{display:block}
+.bk-panel{position:fixed;top:0;right:0;bottom:0;width:min(480px,100vw);
+  background:var(--warm);z-index:301;display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .38s cubic-bezier(.25,.46,.45,.94);overflow:hidden}
+.bk-panel.open{transform:translateX(0)}
+.bk-head{display:flex;align-items:center;justify-content:space-between;
+  padding:22px 26px;border-bottom:1px solid var(--bdr);background:var(--cream);flex-shrink:0}
+.bk-head h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--brown)}
+.bk-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--tl);
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;transition:background .2s}
+.bk-close:hover{background:var(--bdr)}
+.bk-body{flex:1;overflow-y:auto;padding:20px 24px}
+.bk-empty{text-align:center;padding:60px 20px;color:var(--tl);display:none}
+.bk-empty.vis{display:block}
+.bk-empty-icon{font-size:3rem;margin-bottom:16px;opacity:.4}
+.bk-item{border-bottom:1px solid var(--bdr);padding:16px 0}
+.bk-item-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.bk-iname{flex:1;font-size:.95rem;color:var(--brown);line-height:1.4}
+.bk-rm{background:none;border:none;cursor:pointer;font-size:.72rem;color:var(--tl);
+  padding:3px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;
+  transition:background .2s,color .2s}
+.bk-rm:hover{background:#fee;color:var(--rust)}
+.spec-tog{background:none;border:none;cursor:pointer;font-size:.7rem;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--tl);padding:0;margin-top:8px;
+  display:flex;align-items:center;gap:4px;transition:color .2s}
+.spec-tog:hover{color:var(--rust)}
+.spec-tog .arr{transition:transform .2s;display:inline-block}
+.spec-tog.open .arr{transform:rotate(90deg)}
+.spec-wrap{display:none;margin-top:8px}
+.spec-wrap.vis{display:block}
+.spec-wrap input{width:100%;border:1.5px solid var(--bdr);border-radius:2px;
+  padding:8px 12px;font-family:'Lato',sans-serif;font-size:.87rem;color:var(--text);
+  background:#fff;outline:none;transition:border-color .2s}
+.spec-wrap input:focus{border-color:var(--blt)}
+.bk-form{margin-top:24px;padding-top:24px;border-top:2px solid var(--bdr)}
+.bk-form-t{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);margin-bottom:16px}
+.ff{margin-bottom:14px}
+.ff label{display:block;font-size:.7rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--tl);margin-bottom:6px}
+.ff input,.ff textarea{width:100%;border:1.5px solid var(--bdr);border-radius:2px;
+  padding:10px 14px;font-family:'Lato',sans-serif;font-size:.9rem;color:var(--text);
+  background:#fff;outline:none;transition:border-color .2s}
+.ff input:focus,.ff textarea:focus{border-color:var(--blt)}
+.ff textarea{resize:vertical;min-height:76px}
+.del-opts{display:flex;gap:10px;margin-top:6px}
+.del-opt{flex:1;text-align:center;padding:11px 8px;border:1.5px solid var(--bdr);
+  border-radius:2px;cursor:pointer;font-size:.78rem;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--tl);position:relative;user-select:none;
+  transition:border-color .2s,color .2s,background .2s}
+.del-opt.active{border-color:var(--rust);color:var(--rust);background:rgba(184,76,43,.06)}
+.del-opt.soon{cursor:default;opacity:.5}
+.soon-b{position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  background:var(--blt);color:#fff;font-size:.54rem;letter-spacing:1px;
+  text-transform:uppercase;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.col-addr{font-size:.82rem;color:var(--tl);line-height:1.65;margin-top:10px;
+  padding:10px 14px;background:rgba(92,61,46,.06);border-radius:2px;border-left:3px solid var(--gold)}
+.bk-foot{padding:16px 24px 24px;border-top:1px solid var(--bdr);background:var(--cream);flex-shrink:0}
+.co-hint{font-size:.78rem;color:var(--tl);margin-bottom:12px;line-height:1.6}
+.co-btns{display:flex;gap:10px}
+.btn-wa{flex:2;background:#25D366;color:#fff;border:none;border-radius:2px;
+  padding:13px 16px;font-family:'Lato',sans-serif;font-size:.8rem;letter-spacing:1.5px;
+  text-transform:uppercase;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:7px;font-weight:700;transition:background .25s}
+.btn-wa:hover{background:#1da851}
+.btn-wa:disabled,.btn-em:disabled{opacity:.32;cursor:not-allowed;pointer-events:none}
+.btn-em{flex:1;background:none;border:1.5px solid var(--bmid);color:var(--brown);
+  border-radius:2px;padding:13px 12px;font-family:'Lato',sans-serif;font-size:.8rem;
+  letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:background .25s,color .25s}
+.btn-em:hover{background:var(--brown);color:#fff}
+
+.divider{text-align:center;padding:16px 0;font-size:1.3rem;letter-spacing:18px;color:var(--blt);opacity:.4;user-select:none}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){nav{padding:0 28px}.nav-links{gap:18px}}
+@media(max-width:920px){
+  .nav-links{display:none}.nav-tog{display:flex}
+  .hero{grid-template-columns:1fr}.hero-left{padding:80px 32px 60px}.hero-right{height:52vw}
+  .strip{grid-template-columns:1fr 1fr}.strip-i:nth-child(2){border-right:none}
+  .sec{padding:70px 32px}.pgrid{grid-template-columns:repeat(2,1fr)}
+  .story-grid{grid-template-columns:1fr;gap:40px}
+  .tg{grid-template-columns:1fr}.visit{grid-template-columns:1fr}
+  .vinfo{padding:60px 32px}.spec-ban{flex-direction:column;padding:50px 32px}
+  .fg{grid-template-columns:1fr 1fr}
+  footer{padding:50px 32px 28px}
+}
+@media(max-width:580px){
+  nav{padding:0 16px}.nav-logo{font-size:1.35rem}
+  .lang-btn{padding:5px 9px;font-size:.62rem}.bk-btn{padding:7px 10px}
+  .bk-btn .bbl{display:none}
+  .hero-left{padding:76px 18px 44px}.hero-btns{flex-direction:column}
+  .strip{grid-template-columns:1fr}.strip-i{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .sec{padding:60px 18px}.pgrid{grid-template-columns:1fr}
+  .story-imgs{grid-template-columns:1fr}.si-tall{grid-row:auto;min-height:200px}
+  .tg{gap:18px}.spec-items{gap:16px}
+  .fg{grid-template-columns:1fr;gap:28px}
+  footer{padding:40px 18px 24px}.fbot{flex-direction:column;gap:8px;text-align:center}
+  .bk-panel{width:100vw}.co-btns{flex-direction:column}
+}
+</style>
+
+<!-- ══ i18n ══ -->
+<script>
+const i18n={
+af:{
+  pg:"Ouma se Winkel — Tradisionele Tuisgebak, Brackenfell",
+  n1:"Produkte",n2:"Ons Storie",n3:"Getuienis",n4:"Besoek Ons",n5:"Kontak Ons",nb:"Mandjie",
+  hb:"Brackenfell se eie bakkery",
+  ht:"Gebak met<br><em>liefde</em><br>en tradisie",
+  hs:"Soos Ouma dit gemaak het.",
+  hd:"Vars tuisgebakte lekkernye — van romerige melktert tot knapperige beskuit. Elke produk word met hart en sorg gebak in die hart van Brackenfell.",
+  hb1:"Sien Ons Produkte",hb2:"Besoek Ons",htag:"Vars Elke Dag Gebak",
+  hw:"Weeksdae",hsat:"Saterdag",hsun:"Sondag",hcl:"Gesluit",
+  s1t:"Daagliks Vars",s1b:"Elke produk word elke oggend vars gebak — nooit gister se brood nie.",
+  s2t:"Tradisionele Resepte",s2b:"Oorgedra van geslag tot geslag — ouma se geheime resepte bly ons fondament.",
+  s3t:"Soet &amp; Sout",s3b:"Koeke, melktert, vleispasteie, kolwyntjies en nog veel meer.",
+  s4t:"Bestellings Welkom",s4b:"Bestel vooruit vir partytjies, funksies of grootmaat bestellings.",
+  pl:"Ons Aanbod",ph:"Gemaak vir elke<br><em>geleentheid</em>",
+  pb:"Van handgemaakte vleispasteie tot verfynde koeke en tradisionele soetgebak.",
+  cbtn:"Kies Produkte →",
+  c1t:"Koeke",c1d:"Sjokolade, vanielje en spesiale geleentheidskoeke.",c1tag:"Gewild",
+  c2t:"Kolwyntjies",c2d:"Bontgekleurde cupcakes vir kinders en grootmense.",
+  c3t:"Melktert",c3d:"Die ikonies Suid-Afrikaanse melktert — romerig en soet.",c3tag:"Ouma se Wenner",
+  c4t:"Vleispasteie",c4d:"Ons nommer een soutgebak — knapperige kors, smaakvolle vulsel.",
+  c5t:"Beskuit",c5d:"Tradisionele tuisbeskuit — knapperig, heerlik gedoop in koffie.",
+  c6t:"Soetgebak &amp; Meer",c6d:"Koeksusters, roomhoringtjies, rolkoeke en meer.",
+  madd:"Voeg by Mandjie",msel:"item(s) gekies",msel0:"Kies produkte hierbo",
+  sey:"Waarom kies ons kliënte",
+  stitle:"Bekostigbaar.<br><em>Heerlik. Tradisioneel.</em>",
+  sp1:"Melktert",sp1n:"Klante se gunsteling",sp2:"Vleispasteie",sp2n:"Vars gevul, daagliks",
+  sp3:"Bestellingskoeke",sp3n:"Vir elke geleentheid",sp4:"Beskuit &amp; Koekies",sp4n:"In grootmaat beskikbaar",
+  stl:"Ons Storie",sth:"Gebak met die<br><em>hart van Ouma</em>",
+  st1:"Ouma se Winkel is gebore uit 'n liefde vir tradisionele Suid-Afrikaanse gebak. Ons is geleë in die Okovango Junction industriële gebied in Brackenfell — 'n klein winkeltjie met 'n groot hart.",
+  stq:"\"Ons streef daarna dat ons kliënte uit ons winkel stap met iets vir hulle eetlus sowel as vir hulle siel.\"",
+  st2:"Elke dag spesialiseer ons in heerlike soet- en soutgebakte produkte. Ons gebruik geen kortpaaie nie: net vars bestanddele, beproefde resepte en baie liefde.",
+  stbtn:"Besoek Ons Vandag",
+  tl:"Wat Ons Kliënte Sê",th:"Regte mense,<br><em>regte liefde</em>",
+  t1:"\"Die melktert hier is soos wat Ouma s'n was — romerig, soet en perfek. Ek koop elke Saterdag!\"",
+  t1a:"— Marié van Wyk, Brackenfell",
+  t2:"\"Ons het vleispasteie vir 'n kantoorfunksie bestel. Almal was mal oor hulle — die kors was ongelooflik!\"",
+  t2a:"— Johan Botha, Bellville",
+  t3:"\"Die beskuit is absoluut die beste. 2 kg in 'n week klaar. Prys vir kwaliteit is onklopbaar.\"",
+  t3a:"— Sunette Rossouw, Kuils River",
+  vl:"Besoek Ons",vh:"Ons <em>wag</em><br>vir jou",
+  va:"Adres",vav:"K1, Kenwill Drive<br>Okovango Park, Brackenfell, 7560",
+  vhr:"Openingstye",vhrv:"Maandag – Vrydag: 08:00 – 17:30<br>Saterdag &amp; Openbare vakansiedae: 08:00 – 14:00<br>Sondag: Gesluit",
+  vph:"Skakel Ons",vsoc:"Volg Ons",
+  fd:"Tradisionele tuisgebak uit die hart van Brackenfell. Vars elke dag gebak met liefde.",
+  fp:"Produkte",fn:"Navigasie",fh:"Openingstye",fa:"Adres",
+  fc:"© 2025 Ouma se Winkel. Alle regte voorbehou.",fm:"Gemaak met ❤️ — Brackenfell, Kaapstad",
+  bkt:"Jou Mandjie",bke:"Jou mandjie is leeg. Kies 'n kategorie hierbo om produkte by te voeg.",
+  bkr:"Verwyder",bksp:"▶ Spesifikasies (opsioneel)",bksph:"bv. medium, vir verjaarsdag...",
+  bkft:"Jou Besonderhede",bkn:"Naam",bknph:"Jou naam",bkph:"Kontaknommer",bkphph:"082 000 0000",
+  bkno:"Addisionele Notas (opsioneel)",bknoph:"Enige spesiale versoeke vir ons...",
+  bkcol:"Afhaal",bkdel:"Aflewering",bksoon:"Binnekort",
+  bkaddr:"K1 Kenwill Drive, Okovango Park, Brackenfell, 7560",
+  bkhint:"Vul asseblief jou naam en kontaknommer in voordat jy bestel.",
+  bwa:"WhatsApp Bestelling",bem:"E-pos",
+  wg:"Goeie dag Ouma se Winkel 👋\n\nEk wil graag die volgende bestel:\n\n",
+  wn:"Naam",wp:"Kontaknommer",wo:"Opsie",wc:"Afhaal — K1 Kenwill Drive, Brackenfell",wno:"Notas",
+  we:"\nDankie!\n(Stuur asseblief prys en beskikbaarheid terug.)",
+  esub:"Nuwe Bestelling — Ouma se Winkel"
+},
+en:{
+  pg:"Ouma se Winkel — Traditional Home Baking, Brackenfell",
+  n1:"Products",n2:"Our Story",n3:"Testimonials",n4:"Visit Us",n5:"Contact Us",nb:"Basket",
+  hb:"Brackenfell's own bakery",
+  ht:"Baked with<br><em>love</em><br>and tradition",
+  hs:"Just like Ouma used to make.",
+  hd:"Fresh home-baked treats — from creamy milk tart to crispy rusks. Every product is baked with heart and care in the heart of Brackenfell.",
+  hb1:"See Our Products",hb2:"Visit Us",htag:"Freshly Baked Every Day",
+  hw:"Weekdays",hsat:"Saturday",hsun:"Sunday",hcl:"Closed",
+  s1t:"Fresh Daily",s1b:"Every product is baked fresh each morning — never yesterday's bread.",
+  s2t:"Traditional Recipes",s2b:"Passed down through generations — Ouma's secret recipes remain our foundation.",
+  s3t:"Sweet &amp; Savoury",s3b:"Cakes, milk tart, meat pies, cupcakes and much more.",
+  s4t:"Orders Welcome",s4b:"Order ahead for parties, functions or bulk orders.",
+  pl:"Our Offering",ph:"Made for every<br><em>occasion</em>",
+  pb:"From handmade meat pies to refined cakes and traditional pastries.",
+  cbtn:"Choose Products →",
+  c1t:"Cakes",c1d:"Chocolate, vanilla and special occasion cakes.",c1tag:"Popular",
+  c2t:"Cupcakes",c2d:"Colourful cupcakes for kids and adults alike.",
+  c3t:"Milk Tart",c3d:"The iconic South African milk tart — creamy and sweet.",c3tag:"Ouma's Winner",
+  c4t:"Meat Pies",c4d:"Our number one savoury — crispy crust, flavourful filling.",
+  c5t:"Rusks",c5d:"Traditional home rusks — crispy, delicious dipped in coffee.",
+  c6t:"Sweet Pastries &amp; More",c6d:"Koeksisters, cream horns, Swiss rolls and more.",
+  madd:"Add to Basket",msel:"item(s) selected",msel0:"Select products above",
+  sey:"Why our clients choose us",
+  stitle:"Affordable.<br><em>Delicious. Traditional.</em>",
+  sp1:"Milk Tart",sp1n:"Customers' favourite",sp2:"Meat Pies",sp2n:"Fresh filled, daily",
+  sp3:"Custom Cakes",sp3n:"For every occasion",sp4:"Rusks &amp; Cookies",sp4n:"Available in bulk",
+  stl:"Our Story",sth:"Baked with the<br><em>heart of Ouma</em>",
+  st1:"Ouma se Winkel was born from a love of traditional South African baking. We are located in the Okovango Junction industrial area in Brackenfell — a small shop with a big heart.",
+  stq:"\"We strive for our customers to leave our shop with something for their appetite as well as their soul.\"",
+  st2:"Every day we specialise in delicious sweet and savoury baked goods. We take no shortcuts: only fresh ingredients, tried and tested recipes, and lots of love.",
+  stbtn:"Visit Us Today",
+  tl:"What Our Clients Say",th:"Real people,<br><em>real love</em>",
+  t1:"\"The milk tart here is just like what Ouma's used to be — creamy, sweet and perfect. I buy every Saturday!\"",
+  t1a:"— Marié van Wyk, Brackenfell",
+  t2:"\"We ordered meat pies for an office function. Everyone was crazy about them — the pastry was incredible!\"",
+  t2a:"— Johan Botha, Bellville",
+  t3:"\"The rusks are absolutely the best. 2 kg gone within a week. Value for quality is unbeatable.\"",
+  t3a:"— Sunette Rossouw, Kuils River",
+  vl:"Visit Us",vh:"We're <em>waiting</em><br>for you",
+  va:"Address",vav:"K1, Kenwill Drive<br>Okovango Park, Brackenfell, 7560",
+  vhr:"Trading Hours",vhrv:"Monday – Friday: 08:00 – 17:30<br>Saturday &amp; Public Holidays: 08:00 – 14:00<br>Sunday: Closed",
+  vph:"Call Us",vsoc:"Follow Us",
+  fd:"Traditional home baking from the heart of Brackenfell. Freshly baked every day with love.",
+  fp:"Products",fn:"Navigation",fh:"Trading Hours",fa:"Address",
+  fc:"© 2025 Ouma se Winkel. All rights reserved.",fm:"Made with ❤️ — Brackenfell, Cape Town",
+  bkt:"Your Basket",bke:"Your basket is empty. Choose a category above to add products.",
+  bkr:"Remove",bksp:"▶ Specifications (optional)",bksph:"e.g. medium, birthday cake...",
+  bkft:"Your Details",bkn:"Name",bknph:"Your name",bkph:"Contact Number",bkphph:"082 000 0000",
+  bkno:"Additional Notes (optional)",bknoph:"Any special requests for us...",
+  bkcol:"Collection",bkdel:"Delivery",bksoon:"Coming soon",
+  bkaddr:"K1 Kenwill Drive, Okovango Park, Brackenfell, 7560",
+  bkhint:"Please fill in your name and contact number before placing your order.",
+  bwa:"WhatsApp Order",bem:"E-mail",
+  wg:"Good day Ouma se Winkel 👋\n\nI would like to order the following:\n\n",
+  wn:"Name",wp:"Contact",wo:"Option",wc:"Collection — K1 Kenwill Drive, Brackenfell",wno:"Notes",
+  we:"\nThank you!\n(Please reply with price and availability.)",
+  esub:"New Order — Ouma se Winkel"
+}
+};
+let lang='af';
+function t(k){return(i18n[lang]||i18n.af)[k]||k}
+function setLang(l){
+  lang=l;
+  try{localStorage.setItem('osw_lang',l)}catch(e){}
+  document.documentElement.lang=l;
+  document.title=t('pg');
+  document.querySelectorAll('[data-i]').forEach(el=>el.innerHTML=t(el.dataset.i));
+  document.querySelectorAll('[data-iph]').forEach(el=>el.placeholder=t(el.dataset.iph));
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  renderBasket();
+}
+</script>
+
+<!-- ══ CATALOG ══ -->
+<script>
+const CATALOG=[
+  {id:'koeke',
+   img:"url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chocolate_Cake_Flourless_%281%29.jpg/800px-Chocolate_Cake_Flourless_%281%29.jpg')",
+   tk:'c1t',dk:'c1d',
+   products:[
+    {id:'k_choc_s', af:'Sjokolade Koek — Klein',   en:'Chocolate Cake — Small'},
+    {id:'k_choc_m', af:'Sjokolade Koek — Medium',  en:'Chocolate Cake — Medium'},
+    {id:'k_choc_l', af:'Sjokolade Koek — Groot',   en:'Chocolate Cake — Large'},
+    {id:'k_van_s',  af:'Vanielje Koek — Klein',    en:'Vanilla Cake — Small'},
+    {id:'k_van_m',  af:'Vanielje Koek — Medium',   en:'Vanilla Cake — Medium'},
+    {id:'k_van_l',  af:'Vanielje Koek — Groot',    en:'Vanilla Cake — Large'},
+    {id:'k_wortel', af:'Wortelkoek',               en:'Carrot Cake'},
+    {id:'k_rooi',   af:'Rooi Fluweel Koek',        en:'Red Velvet Cake'},
+  ]},
+  {id:'kolwyntjies',
+   img:"url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Apricot_jam_cupcakes.jpg/800px-Apricot_jam_cupcakes.jpg')",
+   tk:'c2t',dk:'c2d',
+   products:[
+    {id:'kw_choc',  af:'Sjokolade Kolwyntjie (enkel)',  en:'Chocolate Cupcake (single)'},
+    {id:'kw_van',   af:'Vanielje Kolwyntjie (enkel)',   en:'Vanilla Cupcake (single)'},
+    {id:'kw_pak6',  af:'Gemengde Pak — 6 Stuks',       en:'Mixed Pack — 6 pieces'},
+    {id:'kw_pak12', af:'Gemengde Pak — 12 Stuks',      en:'Mixed Pack — 12 pieces'},
+  ]},
+  {id:'melktert',
+   img:"url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Melktert_1.jpg/800px-Melktert_1.jpg')",
+   tk:'c3t',dk:'c3d',
+   products:[
+    {id:'mt_k', af:'Klein Melktert',  en:'Small Milk Tart'},
+    {id:'mt_m', af:'Medium Melktert', en:'Medium Milk Tart'},
+    {id:'mt_g', af:'Groot Melktert',  en:'Large Milk Tart'},
+  ]},
+  {id:'vleispasteie',
+   img:"url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Meat_pie_from_Irvine%27s.jpg/800px-Meat_pie_from_Irvine%27s.jpg')",
+   tk:'c4t',dk:'c4d',
+   products:[
+    {id:'vp_k',  af:'Klein Vleiepastei (enkel)',  en:'Small Meat Pie (single)'},
+    {id:'vp_g',  af:'Groot Vleiepastei (enkel)',  en:'Large Meat Pie (single)'},
+    {id:'vp_h',  af:'Hoender Pastei (enkel)',     en:'Chicken Pie (single)'},
+    {id:'vp_6',  af:'Gemengde Pak — 6 Stuks',    en:'Mixed Pack — 6 pieces'},
+  ]},
+  {id:'beskuit',
+   img:"url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Rusks_beschuit.jpg/800px-Rusks_beschuit.jpg')",
+   tk:'c5t',dk:'c5d',
+   products:[
+    {id:'bk_km', af:'Karringmelk Beskuit (500g)', en:'Buttermilk Rusks (500g)'},
+    {id:'bk_an', af:'Anys Beskuit (500g)',        en:'Aniseed Rusks (500g)'},
+    {id:'bk_le', af:'Suurlemoen Beskuit (500g)',  en:'Lemon Rusks (500g)'},
+  ]},
+  {id:'soetgebak',
+   img:"url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Koeksisters.jpg/800px-Koeksisters.jpg')",
+   tk:'c6t',dk:'c6d',
+   products:[
+    {id:'sg_k6',  af:'Koeksisters — 6 Stuks',     en:'Koeksisters — 6 pieces'},
+    {id:'sg_k12', af:'Koeksisters — 12 Stuks',    en:'Koeksisters — 12 pieces'},
+    {id:'sg_rh',  af:'Roomhoringtjies — 6 Stuks', en:'Cream Horns — 6 pieces'},
+    {id:'sg_rol', af:'Rolkoek',                   en:'Swiss Roll'},
+  ]},
+];
+
+let basket=[];
+function pn(item){return lang==='en'?item.en:item.af}
+function catTotal(cid){return basket.filter(i=>i.catId===cid).reduce((s,i)=>s+i.qty,0)}
+function totalItems(){return basket.reduce((s,i)=>s+i.qty,0)}
+function rmItem(id){basket=basket.filter(i=>i.id!==id);badges();renderBasket()}
+function chQty(id,d){const i=basket.find(x=>x.id===id);if(i){i.qty=Math.max(1,i.qty+d);badges();renderBasket()}}
+function setSpec(id,v){const i=basket.find(x=>x.id===id);if(i)i.spec=v}
+function badges(){
+  const n=totalItems();
+  const b=document.getElementById('bkBadge');
+  if(b){b.textContent=n;b.classList.toggle('vis',n>0)}
+  CATALOG.forEach(c=>{
+    const el=document.getElementById('cb_'+c.id);
+    if(!el)return;
+    const tot=catTotal(c.id);
+    el.textContent=tot;el.classList.toggle('vis',tot>0);
+  });
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#"><span>Ouma</span> se Winkel</a>
+  <ul class="nav-links">
+    <li><a href="#produkte"   data-i="n1">Produkte</a></li>
+    <li><a href="#storie"     data-i="n2">Ons Storie</a></li>
+    <li><a href="#getuienis"  data-i="n3">Getuienis</a></li>
+    <li><a href="#besoek"     data-i="n4">Besoek Ons</a></li>
+    <li><a href="mailto:sales@oumasewinkel.co.za" class="nav-cta" data-i="n5">Kontak Ons</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="af" onclick="setLang('af')">AF</button>
+      <button class="lang-btn"        data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="bk-btn" onclick="openBk()">
+      🛒 <span class="bbl" data-i="nb">Mandjie</span>
+      <span class="bk-badge" id="bkBadge"></span>
+    </button>
+    <button class="nav-tog" id="ntog" aria-label="Menu" onclick="togNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="ndrawer">
+  <a href="#produkte"  onclick="closeNav()" data-i="n1">Produkte</a>
+  <a href="#storie"    onclick="closeNav()" data-i="n2">Ons Storie</a>
+  <a href="#getuienis" onclick="closeNav()" data-i="n3">Getuienis</a>
+  <a href="#besoek"    onclick="closeNav()" data-i="n4">Besoek Ons</a>
+  <a href="mailto:sales@oumasewinkel.co.za" class="dcta" data-i="n5">Kontak Ons</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-badge reveal" data-i="hb">Brackenfell se eie bakkery</span>
+    <h1 class="hero-title reveal"   data-i="ht">Gebak met<br><em>liefde</em><br>en tradisie</h1>
+    <p class="hero-sub reveal"      data-i="hs">Soos Ouma dit gemaak het.</p>
+    <p class="hero-desc reveal"     data-i="hd">Vars tuisgebakte lekkernye.</p>
+    <div class="hero-btns reveal">
+      <a href="#produkte" class="btn-p" data-i="hb1">Sien Ons Produkte</a>
+      <a href="#besoek"   class="btn-o" data-i="hb2">Besoek Ons</a>
+    </div>
+    <div class="hero-hrs reveal">
+      <div class="hero-hrs-i"><strong data-i="hw">Weeksdae</strong><span>08:00–17:30</span></div>
+      <div class="hero-hrs-i"><strong data-i="hsat">Saterdag</strong><span>08:00–14:00</span></div>
+      <div class="hero-hrs-i"><strong data-i="hsun">Sondag</strong><span data-i="hcl">Gesluit</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-grid">
+      <div class="hero-main"><span class="hero-tag" data-i="htag">Vars Elke Dag Gebak</span></div>
+      <div class="hero-bot"><div></div><div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-i"><div class="strip-icon">🍞</div><div class="strip-title" data-i="s1t">Daagliks Vars</div><div class="strip-body" data-i="s1b"></div></div>
+  <div class="strip-i"><div class="strip-icon">🫶</div><div class="strip-title" data-i="s2t">Tradisionele Resepte</div><div class="strip-body" data-i="s2b"></div></div>
+  <div class="strip-i"><div class="strip-icon">🎂</div><div class="strip-title" data-i="s3t">Soet &amp; Sout</div><div class="strip-body" data-i="s3b"></div></div>
+  <div class="strip-i"><div class="strip-icon">📦</div><div class="strip-title" data-i="s4t">Bestellings Welkom</div><div class="strip-body" data-i="s4b"></div></div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="sec" id="produkte">
+  <div class="sec-lbl reveal"   data-i="pl">Ons Aanbod</div>
+  <h2 class="sec-title reveal"  data-i="ph">Gemaak vir elke<br><em>geleentheid</em></h2>
+  <p class="sec-body reveal"    data-i="pb">Van handgemaakte vleispasteie tot verfynde koeke.</p>
+  <div class="pgrid">
+    <div class="pcard" id="pc_koeke"       onclick="openCat('koeke')">
+      <div class="pcard-ov"><h3 class="pcard-title" data-i="c1t">Koeke</h3><p class="pcard-desc" data-i="c1d"></p></div>
+      <span class="pcard-tag" data-i="c1tag">Gewild</span>
+      <span class="cat-badge" id="cb_koeke"></span>
+      <button class="pcard-btn" data-i="cbtn">Kies Produkte →</button>
+    </div>
+    <div class="pcard" id="pc_kolwyntjies" onclick="openCat('kolwyntjies')">
+      <div class="pcard-ov"><h3 class="pcard-title" data-i="c2t">Kolwyntjies</h3><p class="pcard-desc" data-i="c2d"></p></div>
+      <span class="cat-badge" id="cb_kolwyntjies"></span>
+      <button class="pcard-btn" data-i="cbtn">Kies Produkte →</button>
+    </div>
+    <div class="pcard" id="pc_melktert"    onclick="openCat('melktert')">
+      <div class="pcard-ov"><h3 class="pcard-title" data-i="c3t">Melktert</h3><p class="pcard-desc" data-i="c3d"></p></div>
+      <span class="pcard-tag" data-i="c3tag">Ouma se Wenner</span>
+      <span class="cat-badge" id="cb_melktert"></span>
+      <button class="pcard-btn" data-i="cbtn">Kies Produkte →</button>
+    </div>
+    <div class="pcard" id="pc_vleispasteie" onclick="openCat('vleispasteie')">
+      <div class="pcard-ov"><h3 class="pcard-title" data-i="c4t">Vleispasteie</h3><p class="pcard-desc" data-i="c4d"></p></div>
+      <span class="cat-badge" id="cb_vleispasteie"></span>
+      <button class="pcard-btn" data-i="cbtn">Kies Produkte →</button>
+    </div>
+    <div class="pcard" id="pc_beskuit"     onclick="openCat('beskuit')">
+      <div class="pcard-ov"><h3 class="pcard-title" data-i="c5t">Beskuit</h3><p class="pcard-desc" data-i="c5d"></p></div>
+      <span class="cat-badge" id="cb_beskuit"></span>
+      <button class="pcard-btn" data-i="cbtn">Kies Produkte →</button>
+    </div>
+    <div class="pcard" id="pc_soetgebak"   onclick="openCat('soetgebak')">
+      <div class="pcard-ov"><h3 class="pcard-title" data-i="c6t">Soetgebak &amp; Meer</h3><p class="pcard-desc" data-i="c6d"></p></div>
+      <span class="cat-badge" id="cb_soetgebak"></span>
+      <button class="pcard-btn" data-i="cbtn">Kies Produkte →</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- SPECIALS BANNER -->
+<div class="spec-ban">
+  <div>
+    <div class="spec-ey" data-i="sey">Waarom kies ons kliënte</div>
+    <h2 class="spec-title" data-i="stitle">Bekostigbaar.<br><em>Heerlik. Tradisioneel.</em></h2>
+  </div>
+  <div class="spec-items">
+    <div class="spec-i"><div class="spec-icon">🥧</div><div class="spec-name" data-i="sp1">Melktert</div><div class="spec-note" data-i="sp1n">Klante se gunsteling</div></div>
+    <div class="spec-i"><div class="spec-icon">🥩</div><div class="spec-name" data-i="sp2">Vleispasteie</div><div class="spec-note" data-i="sp2n">Vars gevul, daagliks</div></div>
+    <div class="spec-i"><div class="spec-icon">🎂</div><div class="spec-name" data-i="sp3">Bestellingskoeke</div><div class="spec-note" data-i="sp3n">Vir elke geleentheid</div></div>
+    <div class="spec-i"><div class="spec-icon">🍪</div><div class="spec-name" data-i="sp4">Beskuit &amp; Koekies</div><div class="spec-note" data-i="sp4n">In grootmaat beskikbaar</div></div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="sec alt" id="storie">
+  <div class="story-grid">
+    <div class="story-imgs reveal">
+      <div class="si si-tall"></div>
+      <div class="si si-sm1"></div>
+      <div class="si si-sm2"></div>
+    </div>
+    <div>
+      <div class="sec-lbl reveal"  data-i="stl">Ons Storie</div>
+      <h2 class="sec-title reveal" data-i="sth">Gebak met die<br><em>hart van Ouma</em></h2>
+      <p class="sec-body reveal"   data-i="st1">Ouma se Winkel is gebore uit 'n liefde vir tradisionele gebak.</p>
+      <blockquote class="story-q reveal" data-i="stq">"Ons streef daarna dat ons kliënte stap met iets vir hulle eetlus sowel as vir hulle siel."</blockquote>
+      <p class="sec-body reveal"   data-i="st2">Elke dag spesialiseer ons in heerlike soet- en soutgebakte produkte.</p>
+      <br>
+      <a href="#besoek" class="btn-p reveal" style="display:inline-flex;margin-top:8px" data-i="stbtn">Besoek Ons Vandag</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="getuienis">
+  <div class="sec-lbl reveal" data-i="tl">Wat Ons Kliënte Sê</div>
+  <h2 class="sec-title reveal" data-i="th">Regte mense,<br><em>regte liefde</em></h2>
+  <div class="tg">
+    <div class="tc reveal"><div class="ts">★★★★★</div><p class="tt" data-i="t1"></p><div class="ta" data-i="t1a"></div></div>
+    <div class="tc reveal"><div class="ts">★★★★★</div><p class="tt" data-i="t2"></p><div class="ta" data-i="t2a"></div></div>
+    <div class="tc reveal"><div class="ts">★★★★★</div><p class="tt" data-i="t3"></p><div class="ta" data-i="t3a"></div></div>
+  </div>
+</section>
+
+<!-- VISIT / MAP -->
+<div class="visit" id="besoek">
+  <div class="vinfo">
+    <div class="sec-lbl reveal" data-i="vl">Besoek Ons</div>
+    <h2 class="sec-title reveal" data-i="vh">Ons <em>wag</em><br>vir jou</h2>
+    <div class="vd reveal"><div class="vd-icon">📍</div><div class="vd-text"><strong data-i="va">Adres</strong><span data-i="vav">K1, Kenwill Drive<br>Okovango Park, Brackenfell, 7560</span></div></div>
+    <div class="vd reveal"><div class="vd-icon">🕐</div><div class="vd-text"><strong data-i="vhr">Openingstye</strong><span data-i="vhrv">Ma–Vr: 08:00–17:30</span></div></div>
+    <div class="vd reveal"><div class="vd-icon">📞</div><div class="vd-text"><strong data-i="vph">Skakel Ons</strong><span>021 982 3512<br><a href="mailto:sales@oumasewinkel.co.za">sales@oumasewinkel.co.za</a><br><a href="https://wa.me/27835640640">WhatsApp: +27 83 564 0640</a></span></div></div>
+    <div class="vd reveal"><div class="vd-icon">🌐</div><div class="vd-text"><strong data-i="vsoc">Volg Ons</strong><span><a href="https://www.facebook.com/oumasewinkel">Facebook — Ouma se Winkel</a></span></div></div>
+  </div>
+  <div class="vmap">
+    <iframe src="https://maps.google.com/maps?q=K1+Kenwill+Drive+Okovango+Park+Brackenfell+7560&output=embed"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ouma se Winkel"></iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg">
+    <div class="fc">
+      <span class="flogo"><span>Ouma</span> se Winkel</span>
+      <p class="fdesc" data-i="fd">Tradisionele tuisgebak uit die hart van Brackenfell.</p>
+      <div class="fsoc">
+        <a href="https://www.facebook.com/oumasewinkel" title="Facebook">f</a>
+        <a href="mailto:sales@oumasewinkel.co.za" title="E-pos">✉</a>
+        <a href="https://wa.me/27835640640" title="WhatsApp">💬</a>
+        <a href="tel:0219823512" title="Bel">☏</a>
+      </div>
+    </div>
+    <div class="fc">
+      <div class="fc-title" data-i="fp">Produkte</div>
+      <ul>
+        <li><a href="#produkte" data-i="c1t">Koeke</a></li>
+        <li><a href="#produkte" data-i="c2t">Kolwyntjies</a></li>
+        <li><a href="#produkte" data-i="c3t">Melktert</a></li>
+        <li><a href="#produkte" data-i="c4t">Vleispasteie</a></li>
+        <li><a href="#produkte" data-i="c5t">Beskuit</a></li>
+        <li><a href="#produkte" data-i="c6t">Soetgebak &amp; Meer</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <div class="fc-title" data-i="fn">Navigasie</div>
+      <ul>
+        <li><a href="#produkte"  data-i="n1">Produkte</a></li>
+        <li><a href="#storie"    data-i="n2">Ons Storie</a></li>
+        <li><a href="#getuienis" data-i="n3">Getuienis</a></li>
+        <li><a href="#besoek"    data-i="n4">Besoek Ons</a></li>
+        <li><a href="mailto:sales@oumasewinkel.co.za" data-i="n5">Kontak Ons</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <div class="fc-title" data-i="fh">Openingstye</div>
+      <ul>
+        <li><a href="#besoek">Ma–Vr: 08:00–17:30</a></li>
+        <li><a href="#besoek">Sat: 08:00–14:00</a></li>
+        <li><a href="#besoek" data-i="hcl">Son: Gesluit</a></li>
+      </ul>
+      <br>
+      <div class="fc-title" data-i="fa">Adres</div>
+      <ul>
+        <li><a href="#besoek">K1 Kenwill Drive</a></li>
+        <li><a href="#besoek">Okovango Park, Brackenfell</a></li>
+        <li><a href="tel:0219823512">021 982 3512</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span data-i="fc">© 2025 Ouma se Winkel.</span>
+    <span data-i="fm">Gemaak met ❤️ — Brackenfell</span>
+  </div>
+</footer>
+
+<!-- CATEGORY MODAL -->
+<div class="cat-ov" id="catOv" onclick="catOvClick(event)">
+  <div class="cat-modal">
+    <div class="cat-head" id="catHead">
+      <div class="cat-head-grad">
+        <div class="cat-modal-title" id="catTitle"></div>
+        <div class="cat-modal-desc"  id="catDesc"></div>
+      </div>
+      <button class="cat-close" onclick="closeCat()">✕</button>
+    </div>
+    <div class="cat-body" id="catBody"></div>
+    <div class="cat-foot">
+      <div class="cat-count" id="catCount"></div>
+      <button class="cat-add" id="catAdd" onclick="commitCat()" disabled data-i="madd">Voeg by Mandjie</button>
+    </div>
+  </div>
+</div>
+
+<!-- BASKET -->
+<div class="bk-ov"    id="bkOv"    onclick="closeBk()"></div>
+<div class="bk-panel" id="bkPanel">
+  <div class="bk-head">
+    <h3 data-i="bkt">Jou Mandjie</h3>
+    <button class="bk-close" onclick="closeBk()">✕</button>
+  </div>
+  <div class="bk-body" id="bkBody"></div>
+  <div class="bk-foot">
+    <p class="co-hint" id="coHint" data-i="bkhint"></p>
+    <div class="co-btns">
+      <button class="btn-wa" id="btnWA"    onclick="sendWA()"    disabled>💬 <span data-i="bwa">WhatsApp Bestelling</span></button>
+      <button class="btn-em" id="btnEmail" onclick="sendEmail()" disabled>✉ <span data-i="bem">E-pos</span></button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* NAV */
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>40)});
+function togNav(){document.getElementById('ntog').classList.toggle('open');document.getElementById('ndrawer').classList.toggle('open')}
+function closeNav(){document.getElementById('ntog').classList.remove('open');document.getElementById('ndrawer').classList.remove('open')}
+
+/* SCROLL REVEAL */
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.classList.add('vis')},i*80);ro.unobserve(e.target)}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+document.querySelectorAll('.hero .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('vis')},180+i*110)});
+
+/* CATEGORY MODAL */
+var mSel={};var curCat=null;
+function openCat(cid){
+  curCat=cid;mSel={};
+  var cat=CATALOG.find(function(c){return c.id===cid});
+  document.getElementById('catHead').style.backgroundImage=cat.img;
+  document.getElementById('catTitle').innerHTML=t(cat.tk);
+  document.getElementById('catDesc').innerHTML=t(cat.dk);
+  document.getElementById('catAdd').innerHTML=t('madd');
+  renderCatBody();
+  document.getElementById('catOv').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function renderCatBody(){
+  var cat=CATALOG.find(function(c){return c.id===curCat});
+  document.getElementById('catBody').innerHTML=cat.products.map(function(p){
+    var q=mSel[p.id]||0;
+    return '<div class="cat-row"><div class="cat-pname">'+(lang==='en'?p.en:p.af)+'</div>'+
+      '<div class="qw">'+
+      '<button class="qb" onclick="mQty(\''+p.id+'\',-1)">−</button>'+
+      '<div class="qv" id="mq_'+p.id+'">'+q+'</div>'+
+      '<button class="qb" onclick="mQty(\''+p.id+'\',+1)">+</button>'+
+      '</div></div>';
+  }).join('');
+  updCatCount();
+}
+function mQty(pid,d){
+  var cur=mSel[pid]||0,nxt=Math.max(0,cur+d);
+  if(nxt===0)delete mSel[pid];else mSel[pid]=nxt;
+  var el=document.getElementById('mq_'+pid);if(el)el.textContent=nxt;
+  updCatCount();
+}
+function updCatCount(){
+  var tot=Object.values(mSel).reduce(function(s,v){return s+v},0);
+  document.getElementById('catCount').textContent=tot>0?tot+' '+t('msel'):t('msel0');
+  document.getElementById('catAdd').disabled=tot===0;
+}
+function commitCat(){
+  var cat=CATALOG.find(function(c){return c.id===curCat});
+  Object.entries(mSel).forEach(function(kv){
+    var pid=kv[0],qty=kv[1];
+    var prod=cat.products.find(function(p){return p.id===pid});
+    var ex=basket.find(function(i){return i.id===pid});
+    if(ex){ex.qty+=qty}else{basket.push({id:pid,catId:curCat,af:prod.af,en:prod.en,qty:qty,spec:''})}
+  });
+  badges();closeCat();openBk();
+}
+function closeCat(){
+  document.getElementById('catOv').classList.remove('open');
+  if(!document.getElementById('bkPanel').classList.contains('open'))document.body.style.overflow='';
+}
+function catOvClick(e){if(e.target===document.getElementById('catOv'))closeCat()}
+
+/* BASKET */
+function openBk(){
+  document.getElementById('bkOv').classList.add('open');
+  document.getElementById('bkPanel').classList.add('open');
+  document.body.style.overflow='hidden';
+  renderBasket();
+}
+function closeBk(){
+  document.getElementById('bkOv').classList.remove('open');
+  document.getElementById('bkPanel').classList.remove('open');
+  document.body.style.overflow='';
+}
+function renderBasket(){
+  var body=document.getElementById('bkBody');if(!body)return;
+  document.querySelectorAll('#bkPanel [data-i]').forEach(function(el){el.innerHTML=t(el.dataset.i)});
+  if(basket.length===0){
+    body.innerHTML='<div class="bk-empty vis"><div class="bk-empty-icon">🧺</div><p>'+t('bke')+'</p></div>';
+    setCoEnabled(false);return;
+  }
+  var savN=(document.getElementById('fName')||{}).value||'';
+  var savP=(document.getElementById('fPhone')||{}).value||'';
+  var savO=(document.getElementById('fNotes')||{}).value||'';
+  var h='';
+  basket.forEach(function(item){
+    h+='<div class="bk-item">'+
+      '<div class="bk-item-top">'+
+        '<span class="bk-iname">'+pn(item)+'</span>'+
+        '<button class="bk-rm" onclick="rmItem(\''+item.id+'\')">'+t('bkr')+'</button>'+
+      '</div>'+
+      '<div class="qw">'+
+        '<button class="qb" onclick="chQty(\''+item.id+'\',-1)">−</button>'+
+        '<div class="qv">'+item.qty+'</div>'+
+        '<button class="qb" onclick="chQty(\''+item.id+'\',+1)">+</button>'+
+      '</div>'+
+      '<button class="spec-tog'+(item.spec?' open':'')+'" id="stg_'+item.id+'" onclick="togSpec(\''+item.id+'\')">'+
+        '<span class="arr">▶</span> '+t('bksp')+
+      '</button>'+
+      '<div class="spec-wrap'+(item.spec?' vis':'')+'" id="sw_'+item.id+'">'+
+        '<input type="text" placeholder="'+t('bksph')+'" value="'+item.spec+'" oninput="setSpec(\''+item.id+'\',this.value)" />'+
+      '</div>'+
+    '</div>';
+  });
+  h+='<div class="bk-form">'+
+    '<div class="bk-form-t">'+t('bkft')+'</div>'+
+    '<div class="ff"><label>'+t('bkn')+' *</label><input type="text" id="fName" placeholder="'+t('bknph')+'" value="'+savN+'" oninput="validate()" /></div>'+
+    '<div class="ff"><label>'+t('bkph')+' *</label><input type="tel" id="fPhone" placeholder="'+t('bkphph')+'" value="'+savP+'" oninput="validate()" /></div>'+
+    '<div class="ff"><label>'+t('bkno')+'</label><textarea id="fNotes" placeholder="'+t('bknoph')+'">'+savO+'</textarea></div>'+
+    '<div class="ff"><label>'+t('bkcol')+' / '+t('bkdel')+'</label>'+
+      '<div class="del-opts">'+
+        '<div class="del-opt active">'+t('bkcol')+'</div>'+
+        '<div class="del-opt soon"><span class="soon-b">'+t('bksoon')+'</span>'+t('bkdel')+'</div>'+
+      '</div>'+
+      '<div class="col-addr">📍 '+t('bkaddr')+'</div>'+
+    '</div>'+
+  '</div>';
+  body.innerHTML=h;
+  validate();
+}
+function togSpec(id){
+  document.getElementById('stg_'+id).classList.toggle('open');
+  document.getElementById('sw_'+id).classList.toggle('vis');
+}
+function validate(){
+  var n=(document.getElementById('fName')||{}).value||'';
+  var p=(document.getElementById('fPhone')||{}).value||'';
+  setCoEnabled(n.trim().length>1&&p.trim().length>6&&basket.length>0);
+}
+function setCoEnabled(ok){
+  ['btnWA','btnEmail'].forEach(function(id){var el=document.getElementById(id);if(el)el.disabled=!ok});
+  var h=document.getElementById('coHint');if(h)h.style.display=ok?'none':'block';
+}
+function buildMsg(){
+  var name=(document.getElementById('fName')||{}).value||'';
+  var phone=(document.getElementById('fPhone')||{}).value||'';
+  var notes=(document.getElementById('fNotes')||{}).value||'';
+  var msg=t('wg');
+  basket.forEach(function(i){
+    msg+='  • '+i.qty+'× '+pn(i);
+    if(i.spec)msg+=' — "'+i.spec+'"';
+    msg+='\n';
+  });
+  msg+='\n'+t('wn')+': '+name+'\n'+t('wp')+': '+phone+'\n'+t('wo')+': '+t('wc');
+  if(notes.trim())msg+='\n'+t('wno')+': '+notes.trim();
+  msg+=t('we');
+  return msg;
+}
+function sendWA(){window.open('https://wa.me/27835640640?text='+encodeURIComponent(buildMsg()),'_blank')}
+function sendEmail(){location.href='mailto:sales@oumasewinkel.co.za?subject='+encodeURIComponent(t('esub'))+'&body='+encodeURIComponent(buildMsg())}
+
+/* INIT */
+(function(){
+  var l='af';try{l=localStorage.getItem('osw_lang')||'af'}catch(e){}
+  if(l!=='af')setLang(l);
+  else{
+    document.querySelectorAll('[data-i]').forEach(function(el){el.innerHTML=t(el.dataset.i)});
+    document.querySelectorAll('[data-iph]').forEach(function(el){el.placeholder=t(el.dataset.iph)});
+  }
+  renderBasket();badges();
+})();
+</script>
+</body>
+</html>
